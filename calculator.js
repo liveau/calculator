@@ -90,7 +90,7 @@ function calFee()
     var fkind=$("#fkind").val();
 	var para=312.5;
 	var lowV=0.064;
-	if(v!=""&&qty!="")
+	if(v!=""&&qty!=""&&fkind!="")
 	{
 		var v=parseFloat(v);
 		qty=parseInt(qty);
@@ -108,7 +108,7 @@ function calFee()
 		if(fee<lowFee)
 			fee=lowFee;
         totalFee=fee+2*(fkind-1);
-		$("#fpayTotal").html("AU$"+totalFee.toFixed(2));
+		$("#fpayTotal").html("AUD $"+totalFee.toFixed(2));
 	}else
 	{
 		layer.msg("请填写完整正确信息才能自动计算");
@@ -128,7 +128,7 @@ function cpTr(ele)
 	html+='</td>';
 	html+='<td><input name="fvolume" value="" class="form-control vol" maxlength="10" type="text"></td>';
 	html+='<td><input name="fcargoQty" value="" class="form-control qty" maxlength="10" onblur="validate(this,{tips:true,Pint:true})" type="text"></td>';
-	html+='<td class="cp" onclick="$(this).parent().remove()"><i class="twa twa-lg twa-x"></i></td>';
+	html+='<td class="cp" onclick="$(this).parent().remove()"><i class="twa twa-lg twa-heavy-minus-sign"></i></td>';
 	html+='</tr>';
 	$(".dataTable").append(html);
 }
