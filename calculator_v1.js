@@ -10,23 +10,7 @@ function calVolume(ele)
 			tr.find("[name='fvolume']").val(v/1000000.00);
 		}
 }
-function specCal(v)//特殊情况
-{
 
-	if(v<=0.064)
-	{
-		fee=(22-0.5)/(0.064-0.001)*(v-0.001)+0.5;
-        return fee;
-	}
-	
-	if(v>0.064)
-	{
-		fee=(250-22)/(1-0.064)*(v-0.064)+22;
-        return fee;
-	}
-	
-
-}
 
 function getQty(cls)
 {
@@ -85,23 +69,22 @@ function calFee()
 	var qty=getQty("qty");
 	var v=getVol("vol");
 	var fee=0;
-	var lfee=0.5
+	var lfee=25
 	var lowFee=parseFloat(lfee);
 	var para=312.5;
-	var lowV=0.064;
 	if(v!=""&&qty!="")
 	{
 		var v=parseFloat(v);
 		qty=parseInt(qty);
 		$("#calTotal").html("总体积："+v.toFixed(3)+"　包裹数："+qty);
 		v=parseFloat(v);
-		fee=v/lowV*lowFee;
+
 		if(v>1)
 			{
-				fee=v*275;
+				fee=(v-1.0)*175+275;
 			}else
 			{
-				fee=specCal(v,lowV);
+				fee=v*275;
 			}
 
 		if(fee<lowFee)
